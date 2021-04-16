@@ -34,7 +34,7 @@ $(function () {
       };
 
       var response = await postData(serviceUrl, body);
-      //console.log(JSON.stringify(response));
+      console.log(JSON.stringify(response));
     },
   });
 
@@ -90,12 +90,18 @@ function selectItem(item) {
 }
 
 async function postData(url, data) {
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-  return response.json();
+  let response;
+  try {
+    response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    respone = response.json();
+  } catch (error) {
+    console.log(error);
+  }
+  return response;
 }
