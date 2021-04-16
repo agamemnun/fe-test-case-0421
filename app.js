@@ -95,7 +95,7 @@ async function postData(url, data) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: data,
+    body: JSON.stringify(data),
   });
   return response.json();
 }
